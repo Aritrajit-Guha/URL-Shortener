@@ -14,7 +14,7 @@ const PORT = 8000;
 // Middleware
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://url-shortener-nine-orpin.vercel.app',
   credentials: true
 }));
 
@@ -29,7 +29,7 @@ app.use("/", router);
 // Connect DB and start server
 const startServer = async () => {
   await ConnectDB(); // Wait for DB connection
-  app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}/`));
+  app.listen(PORT, () => console.log(`Server running at ${PORT}`));
 };
 
 startServer();

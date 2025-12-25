@@ -3,9 +3,9 @@ import { useSearchParams } from "react-router-dom";
 function ShortUrl() {
   // 1. Get the parameters from the URL
   const [searchParams] = useSearchParams();
+  const backend_url=import.meta.env.VITE_BACKEND_URL;
   
-  // 2. Read the specific "id" value
-  // Example URL: http://localhost:5173/success?id=AbCd1
+  
   const shortId = searchParams.get("id");
 
   return (
@@ -19,12 +19,12 @@ function ShortUrl() {
           
           {/* 4. JSX replaces innerHTML */}
           <a 
-            href={`http://localhost:8000/r/${shortId}`} 
+            href={`${backend_url}/r/${shortId}`} 
             target="_blank" 
             rel="noreferrer"
             style={{ fontSize: "20px", color: "blue" }}
           >
-            http://localhost:8000/r/{shortId}
+            ${backend_url}/r/{shortId}
           </a>
           
         </div>

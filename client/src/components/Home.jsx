@@ -7,6 +7,7 @@ function Home() {
   const [allUrls, setAllUrls] = useState([]); // This stores the table data
   const [message, setMessage] = useState(""); // For errors or success msgs
   const navigate = useNavigate();
+  const backend_url=import.meta.env.VITE_BACKEND_URL;
 
   // 2. Fetch Data on Load (The replacement for "Get Routes")
   // This runs AUTOMATICALLY when the user arrives at the Home screen.
@@ -140,7 +141,7 @@ function Home() {
               <tr key={item._id || index}>
                 <td>{index + 1}</td>
                 <td>
-                  <a href={`http://localhost:8000/r/${item.shortUrl}`}
+                  <a href={`${backend_url}/r/${item.shortUrl}`}
                   target="_blank" 
                   rel="noreferrer"
                   onClick={()=>{

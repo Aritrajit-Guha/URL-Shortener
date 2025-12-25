@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       // This tells Vite: "If I ask for /api, send the request to localhost:3000"
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://url-shortener-yfup.onrender.com',
         changeOrigin: true,
         secure: false,
       }
