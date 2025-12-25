@@ -48,12 +48,17 @@ async function handleUserLogin(req, res) {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "2h" });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      sameSite: "lax",
-      secure: false, // set true in production with HTTPS
-      maxAge: 2 * 60 * 60 * 1000,
-    });
+    // Better Version (Works on Localhost AND Render)
+const isProduction = process.env.NODE_ENV === 'production';
+
+res.cookie("token", token, {
+  httpOnly: true,
+  // If we are online, use 'none'. If we are local, use 'lax'.
+  sameSite: isProduction ? "none" : "lax", 
+  // If we are online, force HTTPS. If local, HTTP is fine.
+  secure: isProduction ? true : false, 
+  maxAge: 24 * 60 * 60 * 1000,
+});
 
     return res.status(200).json({ msg: "Login successful🎈🎊", user: { name: user.name, email: user.email } });
   } catch (err) {
