@@ -67,8 +67,16 @@ res.cookie("token", token, {
 }
 
 function handleLogout(req, res) {
-  res.clearCookie("token");
-  return res.status(200).json({msg: "Logging Out!..."});
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  res.clearCookie("token", {
+    httpOnly: true,
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction ? true : false,
+    path: "/",   // must match login
+  });
+
+  return res.status(200).json({ msg: "Logging Out!..." });
 }
 
 // ----------------------------- URL Shortener Logic -----------------------------------
