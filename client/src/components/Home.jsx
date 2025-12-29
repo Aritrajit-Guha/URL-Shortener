@@ -66,7 +66,7 @@ function Home() {
     await fetch(`${backend_url}/api/logout`, {
       method: "POST",
       credentials: "include",
-    });
+    }); 
     navigate("/login");
   };
 
@@ -76,7 +76,7 @@ function Home() {
       <header className="header">
         <div className="logo">URL<span>Short</span></div>
         <nav>
-          <button onClick={handleLogout}>Logout</button>
+          <button onClick={handleLogout} >Logout</button>
         </nav>
       </header>
 
