@@ -1,32 +1,28 @@
 import { useState } from "react";
-import { useNavigate,Link } from "react-router-dom"; 
+import { useNavigate, Link } from "react-router-dom";
+import "../App.css"; // reuse existing CSS
 
 function Signup() {
-  // 1. State: Variables to hold the user's input
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const backend_url=import.meta.env.VITE_BACKEND_URL;
-  const [message, setMessage] = useState(""); // To show success/error messages
-  const navigate=useNavigate();
-  // 2. Handle Change: Updates state when user types
+  const backend_url = import.meta.env.VITE_BACKEND_URL;
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 3. Handle Submit: Sends data to your Backend API
   const handleSubmit = async (e) => {
-    e.preventDefault(); // STOP the page from reloading!
-
+    e.preventDefault();
     try {
       const response = await fetch(`${backend_url}/api/signup`, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -34,10 +30,7 @@ function Signup() {
 
       if (response.ok) {
         setMessage("Signup Successful! Redirecting...");
-        setTimeout(()=>{
-          navigate('/login');
-        },1000);
-        
+        setTimeout(() => navigate("/login"), 1000);
       } else {
         setMessage("Error: " + data.msg);
       }
@@ -47,65 +40,43 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>Signup Form</h2>
-      {/* Remove action/method. Use onSubmit instead */}
-      <form onSubmit={handleSubmit}>
-        
-        {/* Fix: 'for' becomes 'htmlFor' */}
-        <label htmlFor="name">Name:</label>
-        <br />
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-          value={formData.name}
-          onChange={handleChange} // Capture typing
-        />
-        <br />
-        <br />
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Signup</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Signup</button>
+        </form>
 
-        <label htmlFor="email">Email:</label>
-        <br />
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
+        {message && <p className="message">{message}</p>}
 
-        <label htmlFor="password">Password:</label>
-        <br />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-
-        <input type="submit" value="Signup" />
-      </form>
-      
-      {/* Show success/error message */}
-      {message && <p>{message}</p>}
-
-      <hr />
-
-      <p>Already have an account?</p>
-      {/* Update link to point to the React route, not the file */}
-      <a href="/login">Login here</a>
+        <p className="signup-text">
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
+      </div>
     </div>
   );
 }
