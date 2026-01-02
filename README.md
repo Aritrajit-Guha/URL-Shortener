@@ -1,6 +1,5 @@
 # Nodejs journey
-![License](https://img.shields.io/github/license/Aritrajit-Guha/Url-Shortener?style=flat-square)
-![Issues](https://img.shields.io/github/issues/Aritrajit-Guha/Url-Shortener?style=flat-square)
+![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB) ![Node.js + Express.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express.js-000000) ![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-8E75B2) ![Firebase](https://img.shields.io/badge/Database-MongoDB-FFCA28)
 ![GitHub Repo stars](https://img.shields.io/github/stars/Aritrajit-Guha/Url-Shortener?style=social)
 # Project: URL Shortener
 ---
