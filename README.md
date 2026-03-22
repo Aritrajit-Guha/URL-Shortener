@@ -1,10 +1,6 @@
 # 🔗 URL Shortener (Node.js Journey)
 
-![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB)  
-![Node.js + Express.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express.js-000000)  
-![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-8E75B2)  
-![MongoDB](https://img.shields.io/badge/Database-MongoDB-FFCA28)  
-![GitHub Repo stars](https://img.shields.io/github/stars/Aritrajit-Guha/Url-Shortener?style=social)
+![React](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB) ![Node.js + Express.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express.js-000000) ![Gemini](https://img.shields.io/badge/AI-Google%20Gemini-8E75B2) ![MongoDB](https://img.shields.io/badge/Database-MongoDB-FFCA28) ![GitHub Repo stars](https://img.shields.io/github/stars/Aritrajit-Guha/Url-Shortener?style=social)
 
 ---
 
@@ -165,8 +161,8 @@ npm start
 ---
 
 ## Author
-**Aritrajit Guha**
-**Sweety Paul**
+- **Aritrajit Guha**
+- **Sweety Paul**
 
 ---
 
